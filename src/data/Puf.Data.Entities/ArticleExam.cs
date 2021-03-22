@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Puf.Data.Entity.Abstractions;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Puf.Data.Entities
 {
     [Table("ArticleExams", Schema = "Categorization")]
-    public class ArticleExam
+    public class ArticleExam : Entitybase
     {
         [Required]
         public Guid ArticleId { get; set; }
