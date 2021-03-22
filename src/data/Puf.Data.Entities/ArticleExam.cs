@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Puf.Data.Entities
@@ -6,7 +7,9 @@ namespace Puf.Data.Entities
     [Table("ArticleExams", Schema = "Categorization")]
     public class ArticleExam
     {
+        [Required]
         public Guid ArticleId { get; set; }
+        [Required]
         public Guid ExamId { get; set; }
 
         [ForeignKey(nameof(ArticleId))]
