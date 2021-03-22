@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Categorization\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
 
@@ -14,10 +15,14 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\common\Puf.Common.Contracts\Puf.Common.Contracts.csproj" />
     <ProjectReference Include="..\..\data\Puf.Data.Context\Puf.Data.Context.csproj" />
+    <ProjectReference Include="..\..\services\contracts\Puf.Contracts.Management\Puf.Contracts.Management.csproj" />
+    <ProjectReference Include="..\..\services\Puf.Services.Management\Puf.Services.Management.csproj" />
   </ItemGroup>
 
 
