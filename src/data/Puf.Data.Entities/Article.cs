@@ -24,5 +24,6 @@ namespace Puf.Data.Entities
 
         [ForeignKey(nameof(SubjectId))]
         public virtual Subject Subject { get; set; }
+
     }
 }

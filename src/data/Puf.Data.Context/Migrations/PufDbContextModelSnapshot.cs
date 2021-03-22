@@ -250,21 +250,6 @@ namespace Puf.Data.Context.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ExamId1")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ExamId2")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ExamId3")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ExamId4")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ExamId5")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("GradeId")
                         .HasColumnType("uniqueidentifier");
 
@@ -286,16 +271,6 @@ namespace Puf.Data.Context.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExamId1");
-
-                    b.HasIndex("ExamId2");
-
-                    b.HasIndex("ExamId3");
-
-                    b.HasIndex("ExamId4");
-
-                    b.HasIndex("ExamId5");
 
                     b.HasIndex("GradeId");
 
@@ -401,28 +376,6 @@ namespace Puf.Data.Context.Migrations
 
             modelBuilder.Entity("Puf.Data.Entities.Subject", b =>
                 {
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam1")
-                        .WithMany()
-                        .HasForeignKey("ExamId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam2")
-                        .WithMany()
-                        .HasForeignKey("ExamId2");
-
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam3")
-                        .WithMany()
-                        .HasForeignKey("ExamId3");
-
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam4")
-                        .WithMany()
-                        .HasForeignKey("ExamId4");
-
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam5")
-                        .WithMany()
-                        .HasForeignKey("ExamId5");
-
                     b.HasOne("Puf.Data.Entities.Grade", "Grade")
                         .WithMany()
                         .HasForeignKey("GradeId")
