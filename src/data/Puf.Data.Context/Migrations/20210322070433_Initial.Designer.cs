@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Puf.Data.Context;
 
 namespace Puf.Data.Context.Migrations
 {
     [DbContext(typeof(PufDbContext))]
-    partial class PufDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210322070433_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,39 +59,6 @@ namespace Puf.Data.Context.Migrations
                     b.HasIndex("WriterId");
 
                     b.ToTable("Articles","Content");
-                });
-
-            modelBuilder.Entity("Puf.Data.Entities.ArticleExam", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ArticleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("ExamId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("Updated")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleId");
-
-                    b.HasIndex("ExamId");
-
-                    b.ToTable("ArticleExams","Categorization");
                 });
 
             modelBuilder.Entity("Puf.Data.Entities.Document", b =>
@@ -379,21 +348,6 @@ namespace Puf.Data.Context.Migrations
                     b.HasOne("Puf.Data.Entities.Writer", "Writer")
                         .WithMany()
                         .HasForeignKey("WriterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Puf.Data.Entities.ArticleExam", b =>
-                {
-                    b.HasOne("Puf.Data.Entities.Article", "Article")
-                        .WithMany()
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam")
-                        .WithMany()
-                        .HasForeignKey("ExamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

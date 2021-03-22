@@ -12,6 +12,7 @@ namespace Puf.Data.Context
         {
         }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleExam> ArticleExams { get; set; }
         public DbSet<Document> Documents { get; set; }
         public DbSet<Exam> Exams { get; set; }
         public DbSet<Grade> Grades { get; set; }

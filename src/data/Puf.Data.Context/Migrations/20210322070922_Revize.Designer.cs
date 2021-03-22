@@ -10,8 +10,8 @@ using Puf.Data.Context;
 namespace Puf.Data.Context.Migrations
 {
     [DbContext(typeof(PufDbContext))]
-    [Migration("20210320090106_Migration")]
-    partial class Initial
+    [Migration("20210322070922_Revize")]
+    partial class Revize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,6 +59,39 @@ namespace Puf.Data.Context.Migrations
                     b.HasIndex("WriterId");
 
                     b.ToTable("Articles","Content");
+                });
+
+            modelBuilder.Entity("Puf.Data.Entities.ArticleExam", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ArticleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ExamId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArticleId");
+
+                    b.HasIndex("ExamId");
+
+                    b.ToTable("ArticleExams","Categorization");
                 });
 
             modelBuilder.Entity("Puf.Data.Entities.Document", b =>
@@ -252,21 +285,6 @@ namespace Puf.Data.Context.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ExamId1")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ExamId2")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ExamId3")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ExamId4")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ExamId5")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("GradeId")
                         .HasColumnType("uniqueidentifier");
 
@@ -288,16 +306,6 @@ namespace Puf.Data.Context.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ExamId1");
-
-                    b.HasIndex("ExamId2");
-
-                    b.HasIndex("ExamId3");
-
-                    b.HasIndex("ExamId4");
-
-                    b.HasIndex("ExamId5");
 
                     b.HasIndex("GradeId");
 
@@ -377,6 +385,21 @@ namespace Puf.Data.Context.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Puf.Data.Entities.ArticleExam", b =>
+                {
+                    b.HasOne("Puf.Data.Entities.Article", "Article")
+                        .WithMany()
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Puf.Data.Entities.Exam", "Exam")
+                        .WithMany()
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Puf.Data.Entities.SocialAccount", b =>
                 {
                     b.HasOne("Puf.Data.Entities.SocialType", "SocialType")
@@ -403,28 +426,6 @@ namespace Puf.Data.Context.Migrations
 
             modelBuilder.Entity("Puf.Data.Entities.Subject", b =>
                 {
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam1")
-                        .WithMany()
-                        .HasForeignKey("ExamId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam2")
-                        .WithMany()
-                        .HasForeignKey("ExamId2");
-
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam3")
-                        .WithMany()
-                        .HasForeignKey("ExamId3");
-
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam4")
-                        .WithMany()
-                        .HasForeignKey("ExamId4");
-
-                    b.HasOne("Puf.Data.Entities.Exam", "Exam5")
-                        .WithMany()
-                        .HasForeignKey("ExamId5");
-
                     b.HasOne("Puf.Data.Entities.Grade", "Grade")
                         .WithMany()
                         .HasForeignKey("GradeId")

@@ -96,51 +96,11 @@ namespace Puf.Data.Context.Migrations
                     IsActive = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(maxLength: 80, nullable: false),
                     LessonId = table.Column<Guid>(nullable: false),
-                    GradeId = table.Column<Guid>(nullable: false),
-                    ExamId1 = table.Column<Guid>(nullable: false),
-                    ExamId2 = table.Column<Guid>(nullable: true),
-                    ExamId3 = table.Column<Guid>(nullable: true),
-                    ExamId4 = table.Column<Guid>(nullable: true),
-                    ExamId5 = table.Column<Guid>(nullable: true)
+                    GradeId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Subjects", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Subjects_Exams_ExamId1",
-                        column: x => x.ExamId1,
-                        principalSchema: "Categorization",
-                        principalTable: "Exams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Subjects_Exams_ExamId2",
-                        column: x => x.ExamId2,
-                        principalSchema: "Categorization",
-                        principalTable: "Exams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Subjects_Exams_ExamId3",
-                        column: x => x.ExamId3,
-                        principalSchema: "Categorization",
-                        principalTable: "Exams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Subjects_Exams_ExamId4",
-                        column: x => x.ExamId4,
-                        principalSchema: "Categorization",
-                        principalTable: "Exams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Subjects_Exams_ExamId5",
-                        column: x => x.ExamId5,
-                        principalSchema: "Categorization",
-                        principalTable: "Exams",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Subjects_Grades_GradeId",
                         column: x => x.GradeId,
@@ -280,36 +240,6 @@ namespace Puf.Data.Context.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Subjects_ExamId1",
-                schema: "Categorization",
-                table: "Subjects",
-                column: "ExamId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subjects_ExamId2",
-                schema: "Categorization",
-                table: "Subjects",
-                column: "ExamId2");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subjects_ExamId3",
-                schema: "Categorization",
-                table: "Subjects",
-                column: "ExamId3");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subjects_ExamId4",
-                schema: "Categorization",
-                table: "Subjects",
-                column: "ExamId4");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subjects_ExamId5",
-                schema: "Categorization",
-                table: "Subjects",
-                column: "ExamId5");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Subjects_GradeId",
                 schema: "Categorization",
                 table: "Subjects",
@@ -361,6 +291,10 @@ namespace Puf.Data.Context.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Exams",
+                schema: "Categorization");
+
+            migrationBuilder.DropTable(
                 name: "Articles",
                 schema: "Content");
 
@@ -379,10 +313,6 @@ namespace Puf.Data.Context.Migrations
             migrationBuilder.DropTable(
                 name: "Writers",
                 schema: "Management");
-
-            migrationBuilder.DropTable(
-                name: "Exams",
-                schema: "Categorization");
 
             migrationBuilder.DropTable(
                 name: "Grades",
