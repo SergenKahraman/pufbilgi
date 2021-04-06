@@ -63,52 +63,40 @@ export default {
 
     {
       type: 'title',
-      txt: 'My Account',
+      txt: 'Yazarlar',
       icon: 'fa fa-user context-menu__title-icon',
     },
 
     {
       type: 'link',
-      txt: 'Change Password',
-      link: '/page',
+      txt: 'Yazarları Gör',
+      link: '/writer',
     },
 
-    {
-      type: 'link',
-      txt: 'Change Settings',
-      link: '/page',
-    },
-
-    {
-      type: 'link',
-      txt: 'Logout',
-      link: '/page',
-    },
+    
 
     {
       type: 'title',
-      txt: 'Change Subscription',
+      txt: 'Hesap İşlemleri',
       icon: 'fa fa-credit-card context-menu__title-icon',
     },
 
     {
       type: 'link',
-      txt: 'Plans',
-      link: '/page',
+      txt: 'Yazar Girişi',
+      link: '/writer',
     },
 
     {
       type: 'link',
-      txt: 'Payment Settings',
-      link: '/page',
+      txt: 'Yazar Ol',
+      link: '/writer',
     },
 
-    {
-      type: 'link',
-      txt: 'Payment History',
-      link: '/page',
-    },
+    
 
   ],
+
+  
 
 };
