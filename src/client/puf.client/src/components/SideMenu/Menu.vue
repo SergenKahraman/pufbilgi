@@ -56,13 +56,14 @@
           :class="highlightSection('account')"
         >
           <i class="fa fa-user menu__icon" aria-hidden="true"></i>
-          Account
+          Yazarlar
           <i
             class="fa fa-chevron-right menu__arrow-icon"
             aria-hidden="true"
           ></i>
         </a>
       </li>
+      
     </ul>
 
     <!-- context menu: childs of root level itens -->

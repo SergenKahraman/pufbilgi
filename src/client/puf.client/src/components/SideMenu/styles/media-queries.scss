@@ -4,22 +4,24 @@
   }
 
   #wrapper {
-    padding-left: 292px;
+    padding-left: 275px;
   }
 }
 
 @media (max-width: 768px) {
+  .main-content__body {
+    margin: 20px;
+  }
   .main-content {
-    margin: 0 0 0 70px;
+    margin: 20px 0 0 20px;
   }
 
   .main-content__top {
-    width: 100%;
     margin-left: 70px !important;
   }
 
   .main-content__title {
-    margin: 15px 0 15px 0px;
+    margin: 15px 0px 15px 0px;
   }
 
   #wrapper {

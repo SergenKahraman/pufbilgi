@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div class="main-content__top">
       <h1 class="main-content__title">Ana Sayfa</h1>
     </div>

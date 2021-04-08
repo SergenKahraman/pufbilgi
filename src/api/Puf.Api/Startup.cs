@@ -32,7 +32,7 @@ namespace Puf.Api
             services.AddControllers();
             services.AddDataContext(Configuration.GetSection("Settings:Database:Default").Value);
             services.AddManagementService();
-            services.AddCors(options => options.AddPolicy("all", pb => { pb.AllowAnyOrigin().AllowAnyHeader(); }));
+            services.AddCors(options => options.AddPolicy("all", pb => { pb.WithOrigins("http://localhost:8080", "https://localhost:8080"); }));
 
 
 

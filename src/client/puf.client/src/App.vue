@@ -63,4 +63,5 @@ export default {
 @import 'components/SideMenu/styles/menu.scss';
 @import 'components/SideMenu/styles/content-overlay.scss';
 @import 'components/SideMenu/styles/media-queries.scss';
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 </style>
