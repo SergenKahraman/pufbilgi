@@ -1,4 +1,5 @@
-﻿using Puf.Contracts.Management;
+﻿using Microsoft.EntityFrameworkCore;
+using Puf.Contracts.Management;
 using Puf.Data.Context;
 using Puf.Services.Management.Abstraction;
 using System;
@@ -25,9 +26,10 @@ namespace Puf.Services.Management.Concretes
                 EmailAddress = w.MailAddress,
                 Id = w.Id,
                 Job = w.Job,
-                PhotoId = w.DocumentId
+                PhotoId = w.DocumentId,
+                SocialAccounts = context.SocialAccounts.Include(s => s.SocialType).Where(s => s.WriterId == w.Id).Select(s => new SocialAccountDto { Name = s.SocialType.Name, Url = s.Url }).ToList()
 
-            }).ToList();
+            });
         }
     }
 }

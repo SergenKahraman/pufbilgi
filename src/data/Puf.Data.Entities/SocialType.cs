@@ -11,11 +11,5 @@ namespace Puf.Data.Entities
         [Required]
         [MaxLength(60)]
         public string Name { get; set; }
-
-        [Required]
-        public Guid DocumentId { get; set; }
-
-        [ForeignKey(nameof(DocumentId))]
-        public virtual Document Document { get; set; }
     }
 }

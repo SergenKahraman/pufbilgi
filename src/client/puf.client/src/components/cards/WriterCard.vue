@@ -33,6 +33,24 @@
                   <i class="fab fa-instagram"></i>
                 </a>
               </li>
+              <li class="list-inline-item" v-if="facebookUrl != null">
+                <a
+                  class="social-icon text-xs-center"
+                  target="_blank"
+                  :href="facebookUrl"
+                >
+                  <i class="fab fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item" v-if="twitterUrl != null">
+                <a
+                  class="social-icon text-xs-center"
+                  target="_blank"
+                  :href="twitterUrl"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
               <li class="list-inline-item" v-if="linkedinUrl != null">
                 <a
                   class="social-icon text-xs-center"
@@ -91,6 +109,12 @@ export default {
       type: String,
     },
     githubUrl: {
+      type: String,
+    },
+    facebookUrl: {
+      type: String,
+    },
+    twitterUrl: {
       type: String,
     },
     mailAddress: {

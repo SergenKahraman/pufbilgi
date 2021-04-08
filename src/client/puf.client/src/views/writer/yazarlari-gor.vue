@@ -11,6 +11,9 @@
             :job="p.job"
             :description="p.description"
             :mailAddress="p.emailAddress"
+            :instagramUrl="p.instagram"
+            :facebookUrl="p.facebook"
+            :githubUrl="p.github"
           ></writer-card>
         </div>
       </div>
@@ -27,14 +30,50 @@ export default {
   data() {
     return {
       writers: [],
+      writer:{
+        id: "",
+        displayName: "",
+        job:"",
+        description:"",
+        emailAddress:"",
+        instagram:"",
+        facebook:"",
+        twitter:"",
+        linkedin:"",
+        github:"",
+        photoAddress:""
+
+      }
     };
   },
   mounted() {
     axios
-      .get("https://localhost:5001/api/Management/Writer/list/10")
+      .get(process.env.VUE_APP_API_URL + "/Management/Writer/list/10")
       .then((Response) => {
-        this.writers = Response.data;
+        Response.data.forEach(w => {
+            var writer = {
+              id : w.id,
+              displayName : w.displayName,
+              job : w.job,
+              description : w.description,
+              emailAddress : w.emailAddress,
+              instagram : checkAccount(w.socialAccounts, 'Instagram'),
+              facebook : checkAccount(w.socialAccounts, 'Facebook'),
+              linkedin : checkAccount(w.socialAccounts, 'LinkedIn'),
+              twitter : checkAccount(w.socialAccounts, 'Twitter'),
+              github : checkAccount(w.socialAccounts, 'GitHub')
+            };
+            this.writers.push(writer);
+        });
       });
   },
 };
+
+function checkAccount(socialAccounts, account){
+      for (var i = 0; i< socialAccounts.length; i++) {
+        if (socialAccounts[i].name == account) {
+          return socialAccounts[i].url;
+        }
+      }
+    }
 </script>
