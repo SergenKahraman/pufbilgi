@@ -9,9 +9,9 @@
             </p>
             <h4 class="card-title">{{ fullname }}</h4>
             <p class="card-text">
-              <br />
-              {{ description }} <br />
+              {{ city }}
             </p>
+            
             <i class="fas fa-exchange-alt" style="color: blue"></i>
           </div>
         </div>
@@ -20,6 +20,7 @@
         <div class="card">
           <div class="card-body text-center mt-4">
             <h4 class="card-title">{{ job }}</h4>
+            
             <p class="card-text">
               {{ description }}
             </p>
@@ -99,6 +100,10 @@ export default {
       type: String,
     },
     description: {
+      type: String,
+      required: true,
+    },
+    city: {
       type: String,
       required: true,
     },

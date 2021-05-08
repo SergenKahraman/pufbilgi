@@ -25,13 +25,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Puf.Api", "src\api\Puf.Api\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "contracts", "contracts", "{55FFAE05-EFD8-43A2-9A0F-192C53C313F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puf.Contracts.Management", "src\services\contracts\Puf.Contracts.Management\Puf.Contracts.Management.csproj", "{8F8F98D5-42C1-4D94-BC8B-FDCC9DCACC85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Puf.Contracts.Management", "src\services\contracts\Puf.Contracts.Management\Puf.Contracts.Management.csproj", "{8F8F98D5-42C1-4D94-BC8B-FDCC9DCACC85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puf.Services.Management", "src\services\Puf.Services.Management\Puf.Services.Management.csproj", "{852A4900-7592-4685-8659-20AC9FAAE14E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Puf.Services.Management", "src\services\Puf.Services.Management\Puf.Services.Management.csproj", "{852A4900-7592-4685-8659-20AC9FAAE14E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{5EA23A3F-AF43-4EC2-B787-90732A359CC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puf.Common.Contracts", "src\common\Puf.Common.Contracts\Puf.Common.Contracts.csproj", "{6C39B007-A537-4911-8B14-6E1893AAD335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Puf.Common.Contracts", "src\common\Puf.Common.Contracts\Puf.Common.Contracts.csproj", "{6C39B007-A537-4911-8B14-6E1893AAD335}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

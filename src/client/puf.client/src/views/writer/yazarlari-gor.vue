@@ -14,6 +14,7 @@
             :instagramUrl="p.instagram"
             :facebookUrl="p.facebook"
             :githubUrl="p.github"
+            :city="p.city"
           ></writer-card>
         </div>
       </div>
@@ -35,6 +36,7 @@ export default {
         displayName: "",
         job:"",
         description:"",
+        city:"",
         emailAddress:"",
         instagram:"",
         facebook:"",
@@ -57,6 +59,7 @@ export default {
               job : w.job,
               description : w.description,
               emailAddress : w.emailAddress,
+              city : w.city,
               instagram : checkAccount(w.socialAccounts, 'Instagram'),
               facebook : checkAccount(w.socialAccounts, 'Facebook'),
               linkedin : checkAccount(w.socialAccounts, 'LinkedIn'),

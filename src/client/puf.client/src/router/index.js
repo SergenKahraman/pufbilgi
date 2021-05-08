@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import yazarlarigor from '../views/writer/yazarlari-gor.vue'
 import yazarol from '../views/writer/yazar-ol.vue'
 import yazargirisi from '../views/writer/yazar-girisi.vue'
+import profilim from '../views/writer/profilim.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/writer/yazar-girisi',
     name: 'yazar-girisi',
     component: yazargirisi
+  },
+  {
+    path: '/writer/profilim',
+    name: 'profilim',
+    component: profilim
   }
 ]
 

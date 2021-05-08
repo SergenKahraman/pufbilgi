@@ -30,6 +30,12 @@ namespace Puf.Data.Entities  //Doğrulama mailine tıklayana kadar pasif kalır
         [MaxLength(240)]
         public string Description { get; set; }
 
+        [MaxLength(24)]
+        public string City { get; set; }
+
+        [MaxLength(40)]
+        public string VerificationCode { get; set; }
+
         public Guid? DocumentId { get; set; }
 
         [ForeignKey(nameof(DocumentId))]
