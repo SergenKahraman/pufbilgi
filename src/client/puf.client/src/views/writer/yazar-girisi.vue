@@ -75,7 +75,7 @@ export default {
   },
   mounted() {
     if (session.isAuthenticated()) {
-      this.$router.push("/writer/profilim"); //TODO: Buraları değiştirmen gerek hesabım sayfasına gitsin
+      this.$router.push("/writer/profilim");
     }
   },
   methods: {
@@ -92,6 +92,7 @@ export default {
           this.displayname = session.getSession().displayName;
           setTimeout(() => {
             this.$router.push("/writer/profilim");
+            location.reload();
           }, 3000);
         })
         .catch((error) => {

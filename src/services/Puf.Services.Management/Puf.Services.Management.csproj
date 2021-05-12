@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\common\Puf.Common.Contracts\Puf.Common.Contracts.csproj" />
     <ProjectReference Include="..\..\data\Puf.Data.Context\Puf.Data.Context.csproj" />
     <ProjectReference Include="..\contracts\Puf.Contracts.Management\Puf.Contracts.Management.csproj" />
   </ItemGroup>

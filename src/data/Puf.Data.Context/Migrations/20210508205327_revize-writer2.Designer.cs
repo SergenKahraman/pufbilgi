@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Puf.Data.Context;
 
 namespace Puf.Data.Context.Migrations
 {
     [DbContext(typeof(PufDbContext))]
-    partial class PufDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210508205327_revize-writer2")]
+    partial class revizewriter2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,51 +92,6 @@ namespace Puf.Data.Context.Migrations
                     b.HasIndex("ExamId");
 
                     b.ToTable("ArticleExams","Categorization");
-                });
-
-            modelBuilder.Entity("Puf.Data.Entities.ArticleMeta", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ArticleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid?>("PreViewPhotoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("PublishedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Summary")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(400)")
-                        .HasMaxLength(400);
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Updated")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleId");
-
-                    b.HasIndex("PreViewPhotoId");
-
-                    b.ToTable("ArticleMeta","Content");
                 });
 
             modelBuilder.Entity("Puf.Data.Entities.Document", b =>
@@ -444,19 +401,6 @@ namespace Puf.Data.Context.Migrations
                         .HasForeignKey("ExamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Puf.Data.Entities.ArticleMeta", b =>
-                {
-                    b.HasOne("Puf.Data.Entities.Article", "Article")
-                        .WithMany()
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Puf.Data.Entities.Document", "Document")
-                        .WithMany()
-                        .HasForeignKey("PreViewPhotoId");
                 });
 
             modelBuilder.Entity("Puf.Data.Entities.SocialAccount", b =>

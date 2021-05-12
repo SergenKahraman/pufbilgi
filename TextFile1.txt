@@ -1,0 +1,2 @@
+Add-Migration [----MigrationAdý----] -P Puf.Data.Context -C PufDbContext -S Puf.Api
+Update-Database -P Puf.Data.Context -C PufDbContext -S Puf.Api [-Verbose]

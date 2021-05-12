@@ -4,7 +4,11 @@
       <div
         class="alert alert-danger fade show"
         role="alert"
-        v-if="validatedForBlank == false || validatedForPassword == false || validatedForEmail == false"
+        v-if="
+          validatedForBlank == false ||
+          validatedForPassword == false ||
+          validatedForEmail == false
+        "
       >
         <h5 v-if="validatedForBlank == false" class="text-center">
           <i class="fas fa-times-circle mr-3"></i>Lütfen Zorunlu Alanları
@@ -14,102 +18,122 @@
           <i class="fas fa-times-circle mr-3"></i>Şifreler Eşleşmiyor!
         </h5>
         <h5 v-if="validatedForEmail == false" class="text-center">
-          <i class="fas fa-times-circle mr-3"></i>Email Adresi Formatı Yanlış! Örnek: name@domain.com
+          <i class="fas fa-times-circle mr-3"></i>Email Adresi Formatı Yanlış!
+          Örnek: name@domain.com
         </h5>
       </div>
 
       <div class="form-signin">
-        <img
-          class="mb-4"
-          src="../../../public/pufbilgi_logo.png"
-          alt=""
-          width="225"
-          height="55"
-        />
-        <h1 class="h3 mb-3 font-weight-normal">Yazar Olmak İçin Kayıt Olun</h1>
-        <div class="form-row">
-          <input
-            type="text"
-            id="userName"
-            class="form-control col-md-6"
-            placeholder="Adınız *"
-            v-model="name"
-          />
-          <input
-            type="text"
-            id="name"
-            class="form-control col-md-6"
-            placeholder="Soyadınız *"
-            v-model="surName"
-          />
+        <div
+          class="alert alert-success fade show"
+          role="alert"
+          v-if="success == true"
+        >
+          <h5 class="text-center">
+            <i class="fas fa-check-double mr-4"></i>Mailinize Aktivasyon kodu
+            Gönderilmiştir.<br />
+            lütfen Mailiniz Kontrol Ediniz !
+          </h5>
         </div>
+        <div v-else>
+          <img
+            class="mb-4"
+            src="../../../public/pufbilgi_logo.png"
+            alt=""
+            width="225"
+            height="55"
+          />
+          <h1 class="h3 mb-3 font-weight-normal">
+            Yazar Olmak İçin Kayıt Olun
+          </h1>
+          <div class="form-row">
+            <input
+              type="text"
+              id="userName"
+              class="form-control col-md-6"
+              placeholder="Adınız *"
+              v-model="name"
+            />
+            <input
+              type="text"
+              id="name"
+              class="form-control col-md-6"
+              placeholder="Soyadınız *"
+              v-model="surName"
+            />
+          </div>
 
-        <div class="form-row">
-          <input
-            type="text"
-            id="surName"
-            class="form-control"
-            placeholder="Kullanıcı Adı *"
-            v-model="userName"
-          />
-          <input
-            type="email"
-            id="email"
-            class="form-control"
-            placeholder="Email Adresiniz *"
-            v-model="emailAddress"
-          />
-          <input
-            type="text"
-            id="job"
-            class="form-control"
-            placeholder="Mesleğiniz *"
-            v-model="job"
-          />
-          <select class="form-control custom-input" v-on:change="cityChanged">
-            <option value="-1" :selected="city == null">Şehir Seçiniz *</option>
-            <option v-for="c in cities" :key="c.code" :value="c.label">
-              {{ c.label }}
-            </option>
-          </select>
-          <input
-            type="password"
-            id="inputPassword"
-            class="form-control"
-            placeholder="Şifre *"
-            v-model="passwordAgain"
-          />
-          <input
-            type="password"
-            id="inputPasswordAgain"
-            class="form-control"
-            placeholder="Şifre Tekrar *"
-            v-model="password"
-          />
+          <div class="form-row">
+            <input
+              type="text"
+              id="surName"
+              class="form-control"
+              placeholder="Kullanıcı Adı *"
+              v-model="userName"
+            />
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              placeholder="Email Adresiniz *"
+              v-model="emailAddress"
+            />
+            <input
+              type="text"
+              id="job"
+              class="form-control"
+              placeholder="Mesleğiniz *"
+              v-model="job"
+            />
+            <select class="form-control custom-input" v-on:change="cityChanged">
+              <option value="-1" :selected="city == null">
+                Şehir Seçiniz *
+              </option>
+              <option v-for="c in cities" :key="c.code" :value="c.label">
+                {{ c.label }}
+              </option>
+            </select>
+            <input
+              type="password"
+              id="inputPassword"
+              class="form-control"
+              placeholder="Şifre *"
+              v-model="passwordAgain"
+            />
+            <input
+              type="password"
+              id="inputPasswordAgain"
+              class="form-control"
+              placeholder="Şifre Tekrar *"
+              v-model="password"
+            />
+          </div>
+
+          <button class="btn btn-lg btn-primary btn-block" @click="register">
+            Kayıt Ol
+          </button>
+          <p class="mt-5 mb-3 text-muted">
+            Zaten Yazar mısın?
+            <router-link to="/writer/yazar-girisi">Giriş Yap</router-link>
+          </p>
+          <p class="mt-5 mb-3 text-muted">© 2021-2022</p>
         </div>
-
-        <button class="btn btn-lg btn-primary btn-block" @click="register">
-          Kayıt Ol
-        </button>
-        <p class="mt-5 mb-3 text-muted">
-          Zaten Yazar mısın?
-          <router-link to="/writer/yazar-girisi">Giriş Yap</router-link>
-        </p>
-        <p class="mt-5 mb-3 text-muted">© 2021-2022</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import cities from "../writer/cities";
+import session from "../../helpers/session";
+
 export default {
   components: {},
   data() {
     return {
       password: "",
       passwordAgain: "",
-      cities: cities,
       city: null,
       job: "",
       name: "",
@@ -118,18 +142,48 @@ export default {
       userName: "",
       emailAddress: "",
 
+      cities: cities,
       validatedForBlank: true,
       validatedForPassword: true,
       validatedForEmail: true,
+      success: false,
     };
+  },
+  mounted(){
+    if (session.isAuthenticated()) {
+      this.$router.push("/writer/profilim");
+    }
   },
   methods: {
     cityChanged(e) {
       this.city = e.target.value == -1 ? null : e.target.value;
     },
     register() {
-      if (this.validateBlank() && this.validatePassword() && this.validateEmail()) {
-        console.error("tamam"); //TODO:burayı unutma
+      if (
+        this.validateBlank() &&
+        this.validatePassword() &&
+        this.validateEmail()
+      ) {
+        var newWriter = {
+          userName: this.userName,
+          password: this.password,
+          firstName: this.name,
+          lastName: this.surName,
+          job: this.job,
+          city: this.city,
+          emailAddress: this.emailAddress,
+        };
+
+        axios
+          .post(
+            process.env.VUE_APP_API_URL + "/Management/Writer/register",
+            newWriter
+          )
+          .then((response) => {
+            if (response.data) {
+              this.success = true;
+            }
+          });
       }
     },
     validateBlank() {
@@ -180,8 +234,7 @@ export default {
         this.surName.charAt(0).toUpperCase() + this.surName.slice(1);
     },
     job() {
-      this.job =
-        this.job.charAt(0).toUpperCase() + this.job.slice(1);
+      this.job = this.job.charAt(0).toUpperCase() + this.job.slice(1);
     },
   },
 };
@@ -190,7 +243,7 @@ export default {
 <style scoped>
 .form-signin {
   width: 100%;
-  max-width: 450px;
+  max-width: 350px;
   padding: 15px;
   margin: 0 auto;
   margin-top: 10%;

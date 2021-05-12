@@ -14,6 +14,8 @@
             :instagramUrl="p.instagram"
             :facebookUrl="p.facebook"
             :githubUrl="p.github"
+            :twitterUrl="p.twitter"
+            :linkedinUrl="p.linkedin"
             :city="p.city"
           ></writer-card>
         </div>
@@ -62,9 +64,9 @@ export default {
               city : w.city,
               instagram : checkAccount(w.socialAccounts, 'Instagram'),
               facebook : checkAccount(w.socialAccounts, 'Facebook'),
-              linkedin : checkAccount(w.socialAccounts, 'LinkedIn'),
+              linkedin : checkAccount(w.socialAccounts, 'Linkedin'),
               twitter : checkAccount(w.socialAccounts, 'Twitter'),
-              github : checkAccount(w.socialAccounts, 'GitHub')
+              github : checkAccount(w.socialAccounts, 'Github')
             };
             this.writers.push(writer);
         });
@@ -73,10 +75,9 @@ export default {
 };
 
 function checkAccount(socialAccounts, account){
-      for (var i = 0; i< socialAccounts.length; i++) {
-        if (socialAccounts[i].name == account) {
-          return socialAccounts[i].url;
-        }
+      var result = socialAccounts.find(x => x.name == account);
+      if (result) {
+        return result.url;
       }
     }
 </script>

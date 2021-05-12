@@ -12,8 +12,7 @@ namespace Puf.Services.Management.Extention
         public static IServiceCollection AddManagementService(this IServiceCollection services)
         {
             services.AddScoped<IWriterService, WriterService>();
-
-
+            services.AddScoped<IMailService, MailService>();
             return services;
         }
     }

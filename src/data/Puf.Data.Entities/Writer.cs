@@ -22,7 +22,7 @@ namespace Puf.Data.Entities  //Doğrulama mailine tıklayana kadar pasif kalır
 
         [Required]
         [MaxLength(64)]
-        public string MailAddress { get; set; }
+        public string EmailAddress { get; set; }
 
         [MaxLength(64)]
         public string Job { get; set; }

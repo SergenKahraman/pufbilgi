@@ -4,6 +4,7 @@ import yazarlarigor from '../views/writer/yazarlari-gor.vue'
 import yazarol from '../views/writer/yazar-ol.vue'
 import yazargirisi from '../views/writer/yazar-girisi.vue'
 import profilim from '../views/writer/profilim.vue'
+import varificationpage from '../views/writer/varification-page.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/writer/profilim',
     name: 'profilim',
     component: profilim
+  },
+  {
+    path: '/writer/varification-page',
+    name: 'varification-page',
+    component: varificationpage
   }
 ]
 
